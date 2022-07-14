@@ -34,6 +34,9 @@
     <div class="status">
       {{ statusMessage }}
     </div>
+    <div class="flex-container">
+
+
     <div class="board">
       <div *ngFor="let row of [0, 1, 2]" class="board-row">
         <app-cell
@@ -47,10 +50,11 @@
     </div>
     <div >
       <span class="status">
-        logs
+        Logs
       </span>
       <div *ngFor="let item of aiLogs; let i =index" class="cursor-pointer mt-2" (click)="goToMove(item, i)" >{{item.log}}</div>
     </div>
+      </div>
   </section>
 </div>
 

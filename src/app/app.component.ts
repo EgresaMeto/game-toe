@@ -3,11 +3,24 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <div style="text-align:center;">
-      <h1 style="margin-bottom:auto;">Tic-Tac-Toe</h1>
+    <div
+      style="text-align:center;
+  color: black;  text-transform: uppercase;margin-top:1rem;"
+    >
+      <h1
+        style="text-shadow: 2px 2px; background-color: black;
+  color: white; font-size: 50px;"
+      >
+        Tic-Tac-Toe
+      </h1>
 
-      <nav style="margin-top: 0.5rem;">
-        <a routerLink="turn-based" routerLinkActive="active">Turn-based</a>
+      <nav style="margin-top: 2rem; margin-bottom: 2rem; ">
+        <a
+          routerLink="turn-based"
+          routerLinkActive="active"
+          style="width: 10rem; "
+          >Two Players</a
+        >
         <div style="width: 1rem; display: inline-block;"></div>
         <a routerLink="ai" routerLinkActive="active">AI</a>
       </nav>

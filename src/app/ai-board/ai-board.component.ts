@@ -31,10 +31,10 @@ export class AiBoardComponent implements OnInit {
 
   goToMove(move: any, index: number){
     if(this.aiLogs.length - 1 === index){
-   
+
       this.statusMessage = `Player ${this.currentPlayer}'s turn`;
       this.board = move.board;
-        
+
     } else {
       this.statusMessage = "Pause"
       this.board = move.board;
@@ -57,6 +57,9 @@ export class AiBoardComponent implements OnInit {
   }
 
   move(row: number, col: number) {
+    if (this.statusMessage === 'Pause' && !this.gameOver) {
+      return;
+    }
     if (!this.gameOver && this.board[row][col] === Piece.EMPTY) {
       this.aiLogs = [...this.aiLogs, {log: `${this.currentPlayer} " clicked on row:" ${row} " and col: " ${col}`, board: JSON.parse(JSON.stringify(this.board))}]
       this.board[row][col] = this.currentPlayer;

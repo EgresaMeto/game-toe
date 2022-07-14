@@ -1,18 +1,34 @@
-<div>
-  <div>
-    <div class="input-wrapper">
-      <span>Player 1</span>
-      <input (change)="setFirstPlayerName($event)" />
+<div >
+
+
+
+  <div class=" mx-auto px-9">
+   <div >
+<div class=" mb-4">
+      <label class=" text-gray-700 text-lg font-bold pt-4 " for="firstplayer">
+        Player 1:
+      </label>
+      <input  (change)="setFirstPlayerName($event)" class=" input-wrapper shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstplayer " type="text" placeholder="First Player" >
     </div>
-    <div class="input-wrapper">
-      <span>Player 2</span>
-      <input (change)="setSecondPlayerName($event)" />
-    </div>
+
+    <div class="mb-4">
+      <label class=" text-gray-700 text-lg font-bold " for="secondplayer">
+        Player 2:
+      </label>
+      <input (change)="setSecondPlayerName($event)" class=" input-wrapper shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="secondplayer" type="text" placeholder="Second Player" >
+
   </div>
-  <div class="status">
+
+  <button type="button" *ngIf="gameOver"  class="new-game " (click)="newGame()">
+    New Game
+  </button>
+  <div class="status ">
     {{ statusMessage }}
-  </div>
-  <div class="board">
+  </div >
+
+
+<div class="flex-container">
+<div class="board  ">
     <div *ngFor="let row of [0, 1, 2]" class="board-row">
       <app-cell
         *ngFor="let col of [0, 1, 2]"
@@ -22,21 +38,22 @@
         (click)="move(row, col)"
       ></app-cell>
     </div>
-  </div>
-  <br />
-  <button type="button" *ngIf="gameOver" class="new-game" (click)="newGame()">
-    New Game
-  </button>
-  <div>
-    <span class="status">
-      logs
+</div>
+
+
+
+<div>
+    <span class="statuss  ">
+      Logs
     </span>
-    <div *ngFor="let item of twoPlayerLogs; let i =index" class="cursor-pointer mt-2" >
+    <div *ngFor="let item of twoPlayerLogs; let i =index" class=" logs cursor-pointer mt-2  " >
       <div (click)="goToMove(item, i)">
         {{item.log}}
       </div>
-        
+
     </div>
   </div>
+  
+
 </div>
 
