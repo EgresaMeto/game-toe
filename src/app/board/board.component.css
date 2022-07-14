@@ -39,3 +39,10 @@
 .new-game:hover {
   cursor: pointer;
 }
+
+.input-wrapper{
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  flex-direction: column;
+}

@@ -45,6 +45,12 @@
         ></app-cell>
       </div>
     </div>
+    <div >
+      <span class="status">
+        logs
+      </span>
+      <div *ngFor="let item of aiLogs; let i =index" class="cursor-pointer mt-2" (click)="goToMove(item, i)" >{{item.log}}</div>
+    </div>
   </section>
 </div>
 

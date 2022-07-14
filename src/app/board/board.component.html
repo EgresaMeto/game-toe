@@ -1,4 +1,14 @@
 <div>
+  <div>
+    <div class="input-wrapper">
+      <span>Player 1</span>
+      <input (change)="setFirstPlayerName($event)" />
+    </div>
+    <div class="input-wrapper">
+      <span>Player 2</span>
+      <input (change)="setSecondPlayerName($event)" />
+    </div>
+  </div>
   <div class="status">
     {{ statusMessage }}
   </div>
@@ -17,5 +27,16 @@
   <button type="button" *ngIf="gameOver" class="new-game" (click)="newGame()">
     New Game
   </button>
+  <div>
+    <span class="status">
+      logs
+    </span>
+    <div *ngFor="let item of twoPlayerLogs; let i =index" class="cursor-pointer mt-2" >
+      <div (click)="goToMove(item, i)">
+        {{item.log}}
+      </div>
+        
+    </div>
+  </div>
 </div>
 

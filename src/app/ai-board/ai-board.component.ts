@@ -14,16 +14,31 @@ export class AiBoardComponent implements OnInit {
   board: Piece[][] = [];
   statusMessage: string = '';
   aiLevelEasy = true;
+  aiLogs: any[] = [];
 
   constructor(private readonly svc: TicTacToeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.newGame();
+  }
 
   choosePlayer(checked: boolean) {
     this.player = checked ? Piece.X : Piece.O;
   }
   chooseLevel(checked: boolean) {
     this.aiLevelEasy = checked;
+  }
+
+  goToMove(move: any, index: number){
+    if(this.aiLogs.length - 1 === index){
+   
+      this.statusMessage = `Player ${this.currentPlayer}'s turn`;
+      this.board = move.board;
+        
+    } else {
+      this.statusMessage = "Pause"
+      this.board = move.board;
+    }
   }
 
   newGame() {
@@ -43,6 +58,7 @@ export class AiBoardComponent implements OnInit {
 
   move(row: number, col: number) {
     if (!this.gameOver && this.board[row][col] === Piece.EMPTY) {
+      this.aiLogs = [...this.aiLogs, {log: `${this.currentPlayer} " clicked on row:" ${row} " and col: " ${col}`, board: JSON.parse(JSON.stringify(this.board))}]
       this.board[row][col] = this.currentPlayer;
       if (this.svc.isDraw(this.board)) {
         this.statusMessage = `It's a Draw.`;
